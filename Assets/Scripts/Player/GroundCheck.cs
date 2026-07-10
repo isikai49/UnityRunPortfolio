@@ -3,62 +3,36 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     private string groundTag = "Ground";
-    private bool isGround = false;
-    private bool isGroundEnter, isGroundStay, isGroundExit;
+    public bool isGround = false;
 
     public bool IsGround()
     {
-        if (isGroundEnter || isGroundStay)
-        {
-            isGround = true;
-        }
-        else if (isGroundExit)
-        {
-            isGround = false;
-        }
-
-        isGroundEnter = false;
-        isGroundStay = false;
-        isGroundExit = false;
         return isGround;
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.CompareTag(groundTag))
         {
-            Debug.Log("地面が判定に入りました");
-            isGroundEnter = true;
+            isGround = true;
+            Debug.Log("地面に接地");
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.CompareTag(groundTag))
         {
-            Debug.Log("地面が判定に入り続けています");
-            isGroundStay = true;
+            isGround = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.CompareTag(groundTag))
         {
-            Debug.Log("地面が判定をでました");
-            isGroundExit = true;
+            isGround = false;
+            Debug.Log("地面から離れた");
         }
     }
 }
