@@ -3,41 +3,45 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 5f;
+    public float speed;
+    public GroundCheck ground;
 
     private Animator anim;
     private Rigidbody2D rb;
     private float horizontalKey;
+    private bool isGround = false;
 
-    private void Awake()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        horizontalKey = Input.GetAxis("Horizontal");
+        //接地判定を得る
+        isGround = ground.IsGround();
 
+        //キー入力されたら行動する
+        float horizontalKey = Input.GetAxis("Horizontal");
+        float xSpeed = 0.0f;
         if (horizontalKey > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
             anim.SetBool("run", true);
+            xSpeed = speed;
         }
         else if (horizontalKey < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
             anim.SetBool("run", true);
+            xSpeed = -speed;
         }
         else
         {
             anim.SetBool("run", false);
+            xSpeed = 0.0f;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        rb.linearVelocity =
-            new Vector2(horizontalKey * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(xSpeed, rb.linearVelocity.y);
     }
 }
