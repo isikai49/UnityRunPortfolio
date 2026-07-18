@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 380166046}
   - component: {fileID: 380166043}
   - component: {fileID: 380166047}
+  - component: {fileID: 380166048}
   m_Layer: 0
   m_Name: Enemy_stand 0
   m_TagString: Enemy
@@ -601,6 +602,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &380166048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380166042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0b3eea94bd4be4aad715248059f6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectCollision
+  boundHeight: 1
+  playerStepOn: 0
 --- !u!1 &426678693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +1977,7 @@ MonoBehaviour:
   gravity: 5
   jumpSpeed: 15
   jumpLimitTime: 1
+  stepOnRate: 10
   ground: {fileID: 109632693}
   jumpHeight: 3.7
   head: {fileID: 1562426055}
