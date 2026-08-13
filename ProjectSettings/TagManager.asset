@@ -40,6 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background_Sky
+    uniqueID: 4139001415
+    locked: 0
+  - name: Background_Mountain
+    uniqueID: 1941568791
+    locked: 0
+  - name: Background_Forest
+    uniqueID: 2217614651
+    locked: 0
   - name: TileMap
     uniqueID: 32914115
     locked: 0
